@@ -5,10 +5,13 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.TextInputEditText
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.Toolbar
 import android.text.TextUtils
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import com.posks.taxikosovashqip.LocaleUtils
 import com.posks.taxikosovashqip.R
 import com.posks.taxikosovashqip.SettingsManager
 
@@ -16,6 +19,7 @@ import com.posks.taxikosovashqip.SettingsManager
 class PreferencesActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
     private lateinit var usernameEditText: TextInputEditText
     private lateinit var settingsManager: SettingsManager
+    private lateinit var localeUtils: LocaleUtils
 
     private val avatarArray = arrayOf(R.drawable.ic_avatar_asistante, R.drawable.ic_avatar_boy,
             R.drawable.ic_avatar_businness_man, R.drawable.ic_avatar_chef,
@@ -31,7 +35,16 @@ class PreferencesActivity : AppCompatActivity(), AdapterView.OnItemClickListener
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_preferences)
 
+        setTitle(R.string.app_name);
+
         settingsManager = SettingsManager(application)
+        localeUtils = LocaleUtils()
+
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        val actionbar = supportActionBar
+        actionbar!!.setDisplayHomeAsUpEnabled(true)
+
 
         usernameEditText = findViewById(R.id.username_edit_text)
 
@@ -46,16 +59,27 @@ class PreferencesActivity : AppCompatActivity(), AdapterView.OnItemClickListener
         grid.onItemClickListener = this
     }
 
-    private fun setLanguageAlbanian() {
+    private fun restartPreferencesActivity() {
+        startActivity(Intent(this, PreferencesActivity::class.java))
+        finish()
+    }
 
+    private fun setLanguageAlbanian() {
+        localeUtils.setLocale(this, LocaleUtils.LOCALE_ALBANIAN)
+        settingsManager.languageLocale = LocaleUtils.LOCALE_ALBANIAN.toLanguageTag()
+        restartPreferencesActivity()
     }
 
     private fun setLanguageEnglish() {
-
+        localeUtils.setLocale(this, LocaleUtils.LOCALE_ENGLISH)
+        settingsManager.languageLocale = LocaleUtils.LOCALE_ENGLISH.toLanguageTag()
+        restartPreferencesActivity()
     }
 
     private fun setLanguageGerman() {
-
+        localeUtils.setLocale(this, LocaleUtils.LOCALE_GERMAN)
+        settingsManager.languageLocale = LocaleUtils.LOCALE_GERMAN.toLanguageTag()
+        restartPreferencesActivity()
     }
 
     override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
@@ -96,6 +120,23 @@ class PreferencesActivity : AppCompatActivity(), AdapterView.OnItemClickListener
             }
             imageView.setImageResource(avatarArray[position])
             return imageView
+        }
+    }
+
+    override fun onBackPressed() {
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
         }
     }
 }

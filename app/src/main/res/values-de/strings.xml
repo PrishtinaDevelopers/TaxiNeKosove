@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Taxi in Kosovo</string>
+    <string name="hint_name_or_nickname">Name oder spitzname</string>
+    <string name="type_name_or_nickname">Geben Sie zuerst Ihren Namen oder Spitznamen ein</string>
+    <string name="choose_city">Wähle eine Stadt</string>
+    <string name="add_taxi">Taxi hinzufügen</string>
+    <string name="preferences">Optionen</string>
+</resources>

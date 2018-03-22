@@ -23,6 +23,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        setTitle(R.string.app_name);
+
         settingsManager = SettingsManager(application)
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
@@ -83,6 +85,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun goToPreferences() {
         startActivity(Intent(this, PreferencesActivity::class.java))
+        finish()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

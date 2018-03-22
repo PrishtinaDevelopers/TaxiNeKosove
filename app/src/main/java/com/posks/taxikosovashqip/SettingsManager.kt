@@ -43,6 +43,16 @@ class SettingsManager(application: Application) {
                 avatarId
         ).apply()
 
+    var languageLocale: String?
+        get() = miscellaneousSharedPrefs.getString(
+                MiscellaneousSharedPrefKeys.LANGUAGE_LOCALE,
+                "en"
+        )
+        set(languageLocale) = miscellaneousSharedPrefs.edit().putString(
+                MiscellaneousSharedPrefKeys.LANGUAGE_LOCALE,
+                languageLocale
+        ).apply()
+
     init {
         miscellaneousSharedPrefs = application.getSharedPreferences(
                 MISCELLANEOUS_SHARED_PREFS_ID,
@@ -58,6 +68,7 @@ class SettingsManager(application: Application) {
         internal val FIRST_APP_RUN = "first_app_run"
         internal val USERNAME = "username"
         internal val AVATAR_ID = "avatar_id"
+        internal val LANGUAGE_LOCALE = "language_locale"
     }
 
     companion object {
