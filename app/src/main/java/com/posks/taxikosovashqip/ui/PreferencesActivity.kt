@@ -37,9 +37,25 @@ class PreferencesActivity : AppCompatActivity(), AdapterView.OnItemClickListener
 
         usernameEditText.setText(if (settingsManager.username != null) settingsManager.username else null)
 
+        findViewById<ImageView>(R.id.language_albanian).setOnClickListener({ setLanguageAlbanian() })
+        findViewById<ImageView>(R.id.language_english).setOnClickListener({ setLanguageEnglish() })
+        findViewById<ImageView>(R.id.language_german).setOnClickListener({ setLanguageGerman() })
+
         val grid = findViewById<GridView>(R.id.preference_avatar_grid_view)
         grid.adapter = AvatarGridAdapter(this)
         grid.onItemClickListener = this
+    }
+
+    private fun setLanguageAlbanian() {
+
+    }
+
+    private fun setLanguageEnglish() {
+
+    }
+
+    private fun setLanguageGerman() {
+
     }
 
     override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
