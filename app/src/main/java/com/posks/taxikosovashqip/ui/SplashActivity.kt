@@ -3,9 +3,9 @@ package com.posks.taxikosovashqip.ui
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import com.posks.taxikosovashqip.LocaleUtils
+import com.posks.taxikosovashqip.util.LocaleUtils
 import com.posks.taxikosovashqip.R
-import com.posks.taxikosovashqip.SettingsManager
+import com.posks.taxikosovashqip.util.SettingsManager
 import java.util.*
 import kotlin.concurrent.schedule
 

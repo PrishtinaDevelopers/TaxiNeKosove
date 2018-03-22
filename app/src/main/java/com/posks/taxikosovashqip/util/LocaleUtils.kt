@@ -1,4 +1,4 @@
-package com.posks.taxikosovashqip
+package com.posks.taxikosovashqip.util
 
 import android.content.Context
 import java.util.*

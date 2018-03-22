@@ -1,5 +1,6 @@
 package com.posks.taxikosovashqip.ui
 
+import android.support.v4.app.Fragment
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.NavigationView
@@ -12,7 +13,8 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-import com.posks.taxikosovashqip.SettingsManager
+import com.posks.taxikosovashqip.util.SettingsManager
+import android.widget.Toast
 
 
 class MainActivity : AppCompatActivity() {
@@ -31,9 +33,12 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         val actionbar = supportActionBar
         actionbar!!.setDisplayHomeAsUpEnabled(true)
-        actionbar.setHomeAsUpIndicator(R.drawable.ic_menu_black)
+        actionbar.setHomeAsUpIndicator(R.drawable.ic_menu)
 
         mDrawerLayout = findViewById(R.id.drawer_layout)
+
+        setFragment(MainFragment())
+
         val navigationView = findViewById<NavigationView>(R.id.nav_view)
         val headerLayout = navigationView.getHeaderView(0)
         val userAvatar = headerLayout.findViewById<ImageView>(R.id.navigation_user_avatar)
@@ -46,16 +51,19 @@ class MainActivity : AppCompatActivity() {
 
         navigationView.setNavigationItemSelectedListener { menuItem ->
             // set item as selected to persist highlight
+            var fragment: Fragment = MainFragment()
             when {
                 menuItem.itemId == R.id.choose_city -> {
-
+                    fragment = MainFragment()
                 }
                 menuItem.itemId == R.id.add_taxi -> {
-
+                    fragment = MainFragment()
                 }
                 menuItem.itemId == R.id.preferences -> goToPreferences()
             }
-            // close drawer when item is tapped
+
+            setFragment(fragment)
+
             // close drawer when item is tapped
             mDrawerLayout.closeDrawers()
 
@@ -83,6 +91,13 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
+    private fun setFragment(fragment: Fragment) {
+        val fragmentManager = supportFragmentManager
+        fragmentManager.beginTransaction()
+                .replace(R.id.container, fragment)
+                .commit()
+    }
+
     private fun goToPreferences() {
         startActivity(Intent(this, PreferencesActivity::class.java))
         finish()
@@ -96,5 +111,21 @@ class MainActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private var backPressed: Long = 0
+
+    //onBack doubleback finish()
+    override fun onBackPressed() {
+        if (backPressed + 2000 > System.currentTimeMillis()) {
+            super.onBackPressed()
+
+        } else {
+            val fragment: Fragment = MainFragment()
+
+            setFragment(fragment)
+            Toast.makeText(baseContext, "Shtyp prap për dalje", Toast.LENGTH_SHORT).show()
+        }
+        backPressed = System.currentTimeMillis()
     }
 }

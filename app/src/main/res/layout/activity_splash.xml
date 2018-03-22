@@ -10,6 +10,6 @@
         android:layout_height="match_parent"
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
-        android:src="@drawable/splashscreen" />
+        android:src="@drawable/background_splashscreen" />
 
 </RelativeLayout>
