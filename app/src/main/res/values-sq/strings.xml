@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Taxi Në Kosovë</string>
+    <string name="hint_name_or_nickname">Emri ose nofka</string>
+    <string name="type_name_or_nickname">Fillimisht shkruaj emrin ose nofkën</string>
+    <string name="choose_city">Zgjedh qytetin</string>
+    <string name="add_taxi">Shto Taxi</string>
+    <string name="preferences">Preferencat</string>
+</resources>
