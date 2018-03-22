@@ -2,11 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/choose_city"
-        android:title="Zgjedh qytetin" />
+        android:icon="@drawable/ic_local_taxi"
+        android:title="@string/choose_city" />
     <item
         android:id="@+id/add_taxi"
-        android:title="Shto Taxi" />
+        android:icon="@drawable/ic_add"
+        android:title="@string/add_taxi" />
     <item
         android:id="@+id/preferences"
-        android:title="Preferencat" />
+        android:icon="@drawable/ic_settings"
+        android:title="@string/preferences" />
 </menu>
