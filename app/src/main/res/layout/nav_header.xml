@@ -6,7 +6,8 @@
     android:background="@color/colorPrimary"
     android:gravity="center"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    tools:ignore="Overdraw">
 
     <ImageView
         android:id="@+id/navigation_user_avatar"

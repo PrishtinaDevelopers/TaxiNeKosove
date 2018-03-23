@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     android:background="@color/backgroundColor"
     android:gravity="center"
-    tools:context="com.posks.taxikosovashqip.ui.MainFragment">
+    tools:context="com.posks.taxikosovashqip.ui.MainFragment"
+    tools:ignore="Overdraw">
 
     <Spinner
         android:id="@+id/cities_spinner"

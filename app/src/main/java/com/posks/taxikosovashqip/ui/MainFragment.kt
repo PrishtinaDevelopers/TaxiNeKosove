@@ -13,7 +13,6 @@ import android.widget.Toast
 
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.posks.taxikosovashqip.R
@@ -27,10 +26,9 @@ import com.posks.taxikosovashqip.Keys.KEY_CITIES_REFERENCE
 class MainFragment : Fragment() {
     private var citiesSpinner: Spinner? = null
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        val rootView = inflater!!.inflate(R.layout.fragment_main, container, false)
+        val rootView = inflater.inflate(R.layout.fragment_main, container, false)
         citiesSpinner = rootView.findViewById(R.id.cities_spinner)
 
         // Write a message to the database

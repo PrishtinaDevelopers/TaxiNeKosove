@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <!-- VectorPath is disabled because we cannot get optimized versions of the vector drawables -->
+    <issue id="VectorPath" severity="ignore"/>
+
+    <!-- ContentDescription, LabelFor and ClickableViewAccessibility are disabled because they are used for accessibility reasons and not needed in fymio -->
+    <issue id="ContentDescription" severity="ignore"/>
+
+    <!-- Ignore the UnusedResources issue in the specified file -->
+    <issue id="UnusedResources" severity="ignore"/>
+</lint>
