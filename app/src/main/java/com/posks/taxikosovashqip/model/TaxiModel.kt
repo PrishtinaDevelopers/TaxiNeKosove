@@ -5,5 +5,5 @@ data class TaxiModel(
         var cityName: String? = null,
         var numberVala: String? = null,
         var numberIpko: String? = null,
-        var viberOption: Int = 0
+        var viberOption: String? = null
 )

@@ -1,4 +1,4 @@
-package com.posks.taxikosovashqip.ui
+package com.posks.taxikosovashqip.ui.activity
 
 import android.content.Context
 import android.content.Intent

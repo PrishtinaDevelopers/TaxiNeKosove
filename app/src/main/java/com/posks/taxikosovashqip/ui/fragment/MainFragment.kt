@@ -1,15 +1,10 @@
-package com.posks.taxikosovashqip.ui
+package com.posks.taxikosovashqip.ui.fragment
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Spinner
-import android.widget.Toast
 
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -21,10 +16,17 @@ import com.posks.taxikosovashqip.model.CityModel
 import java.util.ArrayList
 
 import android.R.layout.simple_spinner_item
+import android.content.Intent
+import android.util.Log
+import android.widget.*
+import com.posks.taxikosovashqip.Keys.EXTRA_CITY_SELECTION
 import com.posks.taxikosovashqip.Keys.KEY_CITIES_REFERENCE
+import com.posks.taxikosovashqip.ui.activity.TaxiDetailsActivity
+import kotlin.math.max
 
 class MainFragment : Fragment() {
     private var citiesSpinner: Spinner? = null
+    private val cityModelList: ArrayList<CityModel> = ArrayList()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -40,7 +42,6 @@ class MainFragment : Fragment() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
-                val cityModelList = ArrayList<CityModel>()
                 for (postSnapshot in dataSnapshot.children) {
                     val cityModel = postSnapshot.getValue(CityModel::class.java)
                     cityModelList.add(cityModel!!)
@@ -55,17 +56,16 @@ class MainFragment : Fragment() {
             }
         })
 
-        citiesSpinner!!.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(adapterView: AdapterView<*>, view: View, i: Int, l: Long) {
-                //TODO continue to next activity with citySlug
-                Toast.makeText(context, " $i", Toast.LENGTH_SHORT).show()
+        rootView.findViewById<ImageView>(R.id.search_cities_image_view).setOnClickListener({
+            if (cityModelList.size > 0 && citiesSpinner!!.selectedItemPosition > 0) {
+                val intent = Intent(context, TaxiDetailsActivity::class.java)
+                intent.putExtra(
+                        EXTRA_CITY_SELECTION,
+                        cityModelList[citiesSpinner!!.selectedItemPosition - 1].citySlug
+                )
+                startActivity(intent)
             }
-
-            override fun onNothingSelected(adapterView: AdapterView<*>) {
-                Toast.makeText(context, getString(R.string.choose_city), Toast.LENGTH_LONG).show()
-            }
-        }
-
+        })
         return rootView
     }
 
@@ -76,9 +76,12 @@ class MainFragment : Fragment() {
     }
 
     private fun getCityNameArray(cityModelList: List<CityModel>): Array<String?> {
-        val cityNameArray = arrayOfNulls<String>(cityModelList.size)
-        for (i in cityModelList.indices) {
+        val cityNameArray = arrayOfNulls<String>(cityModelList.size + 1)
+        val maxCount = cityModelList.size + 1
+        var i = 0
+        while (i < maxCount) {
             cityNameArray[i] = if (i == 0) getString(R.string.choose_city) else cityModelList[i - 1].cityName
+            i++
         }
         return cityNameArray
     }

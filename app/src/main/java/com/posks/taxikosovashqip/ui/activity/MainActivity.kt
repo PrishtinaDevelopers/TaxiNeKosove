@@ -1,4 +1,4 @@
-package com.posks.taxikosovashqip.ui
+package com.posks.taxikosovashqip.ui.activity
 
 import android.support.v4.app.Fragment
 import android.content.Intent
@@ -15,6 +15,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.posks.taxikosovashqip.util.SettingsManager
 import android.widget.Toast
+import com.posks.taxikosovashqip.ui.fragment.MainFragment
 
 
 class MainActivity : AppCompatActivity() {
