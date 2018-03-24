@@ -125,7 +125,7 @@ class MainActivity : AppCompatActivity() {
             val fragment: Fragment = MainFragment()
 
             setFragment(fragment)
-            Toast.makeText(baseContext, "Shtyp prap për dalje", Toast.LENGTH_SHORT).show()
+            Toast.makeText(baseContext, getString(R.string.press_again_to_exit_app), Toast.LENGTH_SHORT).show()
         }
         backPressed = System.currentTimeMillis()
     }

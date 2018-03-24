@@ -5,4 +5,5 @@
     <string name="choose_city">Wähle eine Stadt</string>
     <string name="add_taxi">Taxi hinzufügen</string>
     <string name="preferences">Optionen</string>
+    <string name="press_again_to_exit_app">Erneut drücken um app zu schließen</string>
 </resources>

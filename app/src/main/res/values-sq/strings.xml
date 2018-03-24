@@ -5,4 +5,5 @@
     <string name="choose_city">Zgjedh qytetin</string>
     <string name="add_taxi">Shto Taxi</string>
     <string name="preferences">Preferencat</string>
+    <string name="press_again_to_exit_app">Shtyp prap për dalje</string>
 </resources>

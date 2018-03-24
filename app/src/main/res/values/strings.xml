@@ -5,4 +5,5 @@
     <string name="choose_city">Choose city</string>
     <string name="add_taxi">Add Taxi</string>
     <string name="preferences">Preferences</string>
+    <string name="press_again_to_exit_app">Press again to exit app</string>
 </resources>
