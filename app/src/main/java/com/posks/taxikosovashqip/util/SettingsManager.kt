@@ -1,4 +1,4 @@
-package com.posks.taxikosovashqip
+package com.posks.taxikosovashqip.util
 
 import android.app.Application
 import android.content.Context
@@ -65,13 +65,13 @@ class SettingsManager(application: Application) {
     }
 
     private object MiscellaneousSharedPrefKeys {
-        internal val FIRST_APP_RUN = "first_app_run"
-        internal val USERNAME = "username"
-        internal val AVATAR_ID = "avatar_id"
-        internal val LANGUAGE_LOCALE = "language_locale"
+        internal const val FIRST_APP_RUN = "first_app_run"
+        internal const val USERNAME = "username"
+        internal const val AVATAR_ID = "avatar_id"
+        internal const val LANGUAGE_LOCALE = "language_locale"
     }
 
     companion object {
-        private val MISCELLANEOUS_SHARED_PREFS_ID = "com.posks.taxikosovashqip"
+        private const val MISCELLANEOUS_SHARED_PREFS_ID = "com.posks.taxikosovashqip"
     }
 }

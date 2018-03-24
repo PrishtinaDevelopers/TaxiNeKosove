@@ -1,3 +1,6 @@
 package com.posks.taxikosovashqip.model
 
-class CityModel(var id: Long, var citySlug: String?, var cityName: String?)
+data class CityModel(
+        var citySlug: String? = null,
+        var cityName: String? = null
+)

@@ -1,4 +1,4 @@
-package com.posks.taxikosovashqip.ui
+package com.posks.taxikosovashqip.ui.activity
 
 import android.content.Context
 import android.content.Intent
@@ -11,9 +11,9 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import com.posks.taxikosovashqip.LocaleUtils
+import com.posks.taxikosovashqip.util.LocaleUtils
 import com.posks.taxikosovashqip.R
-import com.posks.taxikosovashqip.SettingsManager
+import com.posks.taxikosovashqip.util.SettingsManager
 
 
 class PreferencesActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
