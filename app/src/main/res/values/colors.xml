@@ -4,4 +4,7 @@
     <color name="colorPrimaryDark">#C69127</color>
     <color name="colorAccent">#FFBB33</color>
     <color name="backgroundColor">#303134</color>
+    <color name="callBlueColor">#0099cb</color>
+    <color name="callPurpleColor">#7b529e</color>
+    <color name="warningRed">#FF4B0A</color>
 </resources>

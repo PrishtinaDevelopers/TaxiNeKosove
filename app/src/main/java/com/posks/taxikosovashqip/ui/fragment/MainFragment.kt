@@ -1,28 +1,25 @@
 package com.posks.taxikosovashqip.ui.fragment
 
+import android.R.layout.simple_spinner_item
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
+import android.widget.ArrayAdapter
+import android.widget.ImageView
+import android.widget.Spinner
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.posks.taxikosovashqip.R
-import com.posks.taxikosovashqip.model.CityModel
-
-import java.util.ArrayList
-
-import android.R.layout.simple_spinner_item
-import android.content.Intent
-import android.util.Log
-import android.widget.*
 import com.posks.taxikosovashqip.Keys.EXTRA_CITY_SELECTION
 import com.posks.taxikosovashqip.Keys.KEY_CITIES_REFERENCE
+import com.posks.taxikosovashqip.R
+import com.posks.taxikosovashqip.model.CityModel
 import com.posks.taxikosovashqip.ui.activity.TaxiDetailsActivity
-import kotlin.math.max
+import java.util.*
 
 class MainFragment : Fragment() {
     private var citiesSpinner: Spinner? = null

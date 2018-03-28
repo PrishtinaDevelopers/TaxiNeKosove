@@ -9,8 +9,11 @@ import com.google.firebase.database.ValueEventListener
 import com.posks.taxikosovashqip.Keys
 import com.posks.taxikosovashqip.Keys.EXTRA_CITY_SELECTION
 import com.posks.taxikosovashqip.R
+import com.posks.taxikosovashqip.adapter.TaxiAdapter
 import com.posks.taxikosovashqip.model.TaxiModel
+import kotlinx.android.synthetic.main.activity_taxi_details.*
 import java.util.*
+
 
 class TaxiDetailsActivity : AppCompatActivity() {
     private val taxiModelList: ArrayList<TaxiModel> = ArrayList()
@@ -31,6 +34,7 @@ class TaxiDetailsActivity : AppCompatActivity() {
                     val taxiModel = postSnapshot.getValue(TaxiModel::class.java)
                     taxiModelList.add(taxiModel!!)
                 }
+                setListAdapter(taxiModelList)
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -38,5 +42,10 @@ class TaxiDetailsActivity : AppCompatActivity() {
                 //                Log.w(TAG, "Failed to read value.", error.toException());
             }
         })
+    }
+
+    private fun setListAdapter(taxiModelList: ArrayList<TaxiModel>) {
+        val taxiAdapter = TaxiAdapter(this, taxiModelList)
+        taxi_list_view.adapter = taxiAdapter
     }
 }
