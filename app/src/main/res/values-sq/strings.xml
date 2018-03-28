@@ -6,4 +6,10 @@
     <string name="add_taxi">Shto Taxi</string>
     <string name="preferences">Preferencat</string>
     <string name="press_again_to_exit_app">Shtyp prap për dalje</string>
+    <string name="viber_not_installed">VIBER NUK ËSHTE I INSTALUAR</string>
+    <string name="taxi_info_taxi_name_placeholder">Emri: %1$s</string>
+    <string name="taxi_info_taxi_location_placeholder">Lokacioni: %1$s</string>
+    <string name="taxi_info_taxi_number_placeholder">Numri i Telefonit: %1$s / %2$s</string>
+    <string name="call">Telefono</string>
+    <string name="cancel">Dil</string>
 </resources>

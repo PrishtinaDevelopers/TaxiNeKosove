@@ -1,21 +1,26 @@
 package com.posks.taxikosovashqip.ui.activity
 
-import android.support.v4.app.Fragment
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.support.design.widget.NavigationView
+import android.support.v4.app.ActivityCompat
+import android.support.v4.app.Fragment
+import android.support.v4.content.ContextCompat
+import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
-import com.posks.taxikosovashqip.R
-import android.support.v4.view.GravityCompat
 import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-import com.posks.taxikosovashqip.util.SettingsManager
 import android.widget.Toast
+import com.posks.taxikosovashqip.Keys.CALL_PHONE_PERMISSION_REQUEST_CODE
+import com.posks.taxikosovashqip.R
 import com.posks.taxikosovashqip.ui.fragment.MainFragment
+import com.posks.taxikosovashqip.util.SettingsManager
 
 
 class MainActivity : AppCompatActivity() {
@@ -26,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        setTitle(R.string.app_name);
+        setTitle(R.string.app_name)
 
         settingsManager = SettingsManager(application)
 
@@ -49,6 +54,8 @@ class MainActivity : AppCompatActivity() {
         usernameText.text = settingsManager.username
         userAvatar.setOnClickListener({ goToPreferences() })
         usernameText.setOnClickListener({ goToPreferences() })
+
+        checkCallPermission()
 
         navigationView.setNavigationItemSelectedListener { menuItem ->
             // set item as selected to persist highlight
@@ -128,5 +135,36 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(baseContext, getString(R.string.press_again_to_exit_app), Toast.LENGTH_SHORT).show()
         }
         backPressed = System.currentTimeMillis()
+    }
+
+    private fun checkCallPermission() {
+        // Here, thisActivity is the current activity
+        if (ContextCompat.checkSelfPermission(this,
+                        Manifest.permission.CALL_PHONE)
+                != PackageManager.PERMISSION_GRANTED) {
+
+                ActivityCompat.requestPermissions(this,
+                        arrayOf(Manifest.permission.CALL_PHONE),
+                        CALL_PHONE_PERMISSION_REQUEST_CODE)
+        }
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int,
+                                            permissions: Array<String>, grantResults: IntArray) {
+        when (requestCode) {
+            CALL_PHONE_PERMISSION_REQUEST_CODE -> {
+                // If request is cancelled, the result arrays are empty.
+                if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+
+                } else {
+                    Toast.makeText(this, "APP CANNOT RUN WITHOUT CALL PHONE PERMISSION", Toast.LENGTH_SHORT).show()
+                    finish()
+                }
+                return
+            }
+            else -> {
+                // Ignore all other requests.
+            }
+        }
     }
 }

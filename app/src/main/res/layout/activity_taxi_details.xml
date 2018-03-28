@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundColor"
+    android:descendantFocusability="blocksDescendants"
     android:divider="@color/backgroundColor"
     android:dividerHeight="8dp"
+    android:focusable="false"
     android:padding="16dp"
     tools:context="com.posks.taxikosovashqip.ui.activity.TaxiDetailsActivity" />

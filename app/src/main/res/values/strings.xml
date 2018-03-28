@@ -6,4 +6,10 @@
     <string name="add_taxi">Add Taxi</string>
     <string name="preferences">Preferences</string>
     <string name="press_again_to_exit_app">Press again to exit app</string>
+    <string name="viber_not_installed">VIBER NOT INSTALLED</string>
+    <string name="taxi_info_taxi_name_placeholder">Name: %1$s</string>
+    <string name="taxi_info_taxi_location_placeholder">Location: %1$s</string>
+    <string name="taxi_info_taxi_number_placeholder">Phone Number: %1$s / %2$s</string>
+    <string name="call">Call</string>
+    <string name="cancel">Cancel</string>
 </resources>
